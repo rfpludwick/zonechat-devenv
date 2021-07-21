@@ -1,0 +1,27 @@
+---
+
+version: "3.9"
+services:
+  app:
+    image: "golang:1.16.4-alpine"
+    container_name: "zonechat-server"
+    ports:
+      - "8082:8080"
+    volumes:
+      - "${HOST_WORKSPACE_SERVER}:/go/src/go-with-compose"
+    working_dir: "/go/src/go-with-compose"
+    command: go run .
+    networks:
+      - zonechat
+  nginx:
+    image: "nginx:1.21.1"
+    container_name: "zonechat-client-web"
+    ports:
+      - "8081:80"
+    volumes:
+      - "${HOST_WORKSPACE_CLIENT_WEB}:/usr/share/nginx/html:ro"
+    networks:
+      - zonechat
+networks:
+  zonechat:
+    name: zonechat

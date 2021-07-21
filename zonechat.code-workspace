@@ -1,0 +1,162 @@
+{
+	"folders": [
+		{
+			"name": "devenv",
+			"path": "."
+		},
+		{
+			"name": "client-web",
+			"path": "../zonechat-client-web"
+		},
+		{
+			"name": "server",
+			"path": "../zonechat-server"
+		}
+	],
+	"settings": {
+		"window.title": "${folderName}${separator}${activeFolderShort}/${activeEditorShort}${dirty}${separator}ZoneChat${separator}${appName}",
+		"workbench.editor.labelFormat": "medium",
+		"docker.dockerComposeBuild": false
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Run YAML linting - client-web",
+				"type": "shell",
+				"command": "yamllint .",
+				"group": "test",
+				"problemMatcher": [],
+				"presentation": {
+					"reveal": "always",
+					"panel": "new"
+				},
+				"options": {
+					"cwd": "${workspaceFolder:client-web}"
+				}
+			},
+			{
+				"label": "Run Markdown linting - client-web",
+				"type": "shell",
+				"command": "markdownlint -c .markdownlint.yaml *.md **/*.md",
+				"group": "test",
+				"problemMatcher": [],
+				"presentation": {
+					"reveal": "always",
+					"panel": "new"
+				},
+				"options": {
+					"cwd": "${workspaceFolder:client-web}"
+				}
+			},
+			{
+				"label": "Run all linting - client-web",
+				"problemMatcher": [],
+				"dependsOrder": "sequence",
+				"dependsOn": [
+					"Run YAML linting - client-web",
+					"Run Markdown linting - client-web"
+				]
+			},
+			{
+				"label": "Run YAML linting - devenv",
+				"type": "shell",
+				"command": "yamllint .",
+				"group": "test",
+				"problemMatcher": [],
+				"presentation": {
+					"reveal": "always",
+					"panel": "new"
+				},
+				"options": {
+					"cwd": "${workspaceFolder:devenv}"
+				}
+			},
+			{
+				"label": "Run Markdown linting - devenv",
+				"type": "shell",
+				"command": "markdownlint -c .markdownlint.yaml *.md **/*.md",
+				"group": "test",
+				"problemMatcher": [],
+				"presentation": {
+					"reveal": "always",
+					"panel": "new"
+				},
+				"options": {
+					"cwd": "${workspaceFolder:devenv}"
+				}
+			},
+			{
+				"label": "Run shell linting - devenv",
+				"type": "shell",
+				"command": "find -name *.sh | xargs shellcheck",
+				"group": "test",
+				"problemMatcher": [],
+				"presentation": {
+					"reveal": "always",
+					"panel": "new"
+				},
+				"options": {
+					"cwd": "${workspaceFolder:devenv}"
+				}
+			},
+			{
+				"label": "Run all linting - devenv",
+				"problemMatcher": [],
+				"dependsOrder": "sequence",
+				"dependsOn": [
+					"Run YAML linting - devenv",
+					"Run Markdown linting - devenv",
+					"Run shell linting - devenv"
+				]
+			},
+			{
+				"label": "Run YAML linting - server",
+				"type": "shell",
+				"command": "yamllint .",
+				"group": "test",
+				"problemMatcher": [],
+				"presentation": {
+					"reveal": "always",
+					"panel": "new"
+				},
+				"options": {
+					"cwd": "${workspaceFolder:server}"
+				}
+			},
+			{
+				"label": "Run Markdown linting - server",
+				"type": "shell",
+				"command": "markdownlint -c .markdownlint.yaml *.md **/*.md",
+				"group": "test",
+				"problemMatcher": [],
+				"presentation": {
+					"reveal": "always",
+					"panel": "new"
+				},
+				"options": {
+					"cwd": "${workspaceFolder:server}"
+				}
+			},
+			{
+				"label": "Run all linting - server",
+				"problemMatcher": [],
+				"dependsOrder": "sequence",
+				"dependsOn": [
+					"Run YAML linting - server",
+					"Run Markdown linting - server"
+				]
+			},
+			{
+				"label": "Run all linting",
+				"problemMatcher": [],
+				"dependsOrder": "sequence",
+				"dependsOn": [
+					"Run all linting - client-web",
+					"Run all linting - devenv",
+					"Run all linting - server"
+				]
+			}
+		]
+	}
+}
