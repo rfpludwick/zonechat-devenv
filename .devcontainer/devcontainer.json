@@ -1,5 +1,14 @@
 {
 	"image": "${localEnv:RFPLUDWICK_NEXUS_HOSTNAME}/vscode/base:latest",
+	"features": {
+		"docker-from-docker": {
+			"version": "latest",
+			"moby": true
+		}
+	},
+	"runArgs": [
+		"--init"
+	],
 	"postCreateCommand": "bash .devcontainer/provision.sh",
 	"initializeCommand": "bash .devcontainer/initialize.sh",
 	"extensions": [
@@ -9,6 +18,7 @@
 		"eamodio.gitlens",
 		"timonwong.shellcheck",
 		"davidanson.vscode-markdownlint",
+		"redhat.vscode-yaml",
 		"golang.go",
 		"ms-azuretools.vscode-docker",
 		"4ops.packer",
