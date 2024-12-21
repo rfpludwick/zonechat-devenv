@@ -15,7 +15,6 @@
 		"oderwat.indent-rainbow",
 		"streetsidesoftware.code-spell-checker",
 		"github.vscode-pull-request-github",
-		"eamodio.gitlens",
 		"timonwong.shellcheck",
 		"davidanson.vscode-markdownlint",
 		"redhat.vscode-yaml",
@@ -31,16 +30,12 @@
 		"source=${localWorkspaceFolder}/../zonechat-server,target=/workspaces/zonechat-server,type=bind"
 	],
 	"remoteEnv": {
-		"TZ": "America/Los_Angeles",,
 		"VAULT_ADDR": "${localEnv:VAULT_ADDR}",
 		"VAULT_GITHUB_TOKEN": "${localEnv:VAULT_GITHUB_TOKEN}",
 		"HOST_HOME": "${localEnv:HOME}",
 		"HOST_WORKSPACE_CLIENT_WEB": "${localWorkspaceFolder}/../zonechat-client-web",
 		"HOST_WORKSPACE_DEVENV": "${localWorkspaceFolder}",
 		"HOST_WORKSPACE_SERVER": "${localWorkspaceFolder}/../zonechat-server",
-		"PATH": "${containerEnv:PATH}:/usr/local/go/bin",
-		"ANSIBLE_REMOTE_TEMP": "/tmp/vscode-devcontainer/ansible",
-		"PACKER_TMP_DIR": "/tmp/vscode-devcontainer/packer",
 		"PKR_VAR_nexus_hostname": "${localEnv:RFPLUDWICK_NEXUS_HOSTNAME}"
 	}
 }
